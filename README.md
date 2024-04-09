@@ -1351,7 +1351,7 @@ server {
  ssl_prefer_server_ciphers off;
  location / {
     auth_basic "login password";
-    auth_basic_user_file /opt/nginx/user_file;
+    auth_basic_user_file /opt/nginx/user_file;   #密码认证两条配置
     proxy_pass http://127.0.0.1:5000;
     proxy_ssl_server_name on;
     proxy_redirect off;
@@ -1373,6 +1373,10 @@ server {
  server_name xxx.xxx.xxx; #你的域名
  rewrite ^(.*)$ https://${server_name}$1 permanent;
 }
+
+
+[root@iZuf65w653nremm3zw9ne1Z ~]# htpasswd -cm   /opt/nginx/user_file  user1
+[root@iZuf65w653nremm3zw9ne1Z ~]# systemctl restart nginx
 ```
 
 
