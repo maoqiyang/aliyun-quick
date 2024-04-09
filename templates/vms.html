@@ -1,0 +1,23 @@
+<!-- templates/vms.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>所有虚拟机</title>
+</head>
+<body>
+    <h1>所有虚拟机</h1>
+    <div id="vms-info">
+        {% for vm in vms %}
+            <p>实例ID: {{ vm.InstanceId }}</p>
+            <p>实例名称: {{ vm.InstanceName }}</p>
+            <p>CPU核数: {{ vm.Cpu }}</p>
+            <p>内存大小: {{ vm.Memory }} MB</p>
+            <p>公网IP地址: {{ vm.PublicIpAddress.IpAddress | join(', ') }}</p>
+            <p>运行状态: {{ vm.Status }}</p>
+            <hr>
+        {% endfor %}
+    </div>
+</body>
+</html>
